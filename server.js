@@ -1,92 +1,105 @@
-const http = require("http");
-const fs = require("fs");
 
-const PORT = 8080;
+const express = require("express");
+const mongoose = require("mongoose");
+// const routes = require("./routes");
+const cors = require('cors')
+const app = express();
+const isDev = process.env.NODE_ENV !== 'production';
+const PORT = process.env.PORT || 3001;
+const config = require('./config/config');
 
-const server = http.createServer(handleRequest);
+require('dotenv').config();
 
-function handleRequest(req, res) {
+app.use(cors());
 
-    // Capture the url the request is made to
-    const path = req.url;
+app.use(require('serve-static')(__dirname + '/../../public'));
 
-    // Depending on the URL, display a different HTML file.
-    switch (path) {
-
-        case "/":
-        // return displayRoot(path, req, res);
-        case "/food":
-        // return displayFood(path, req, res);
-        case "/css":
-        // return displayCSS(path, req, res);
-
-        case "/movies":
-            // return displayMovies(path, req, res);
-            return serveHTML(`${path}.html`, res);
+// Set up Mongoose
+// mongoose.connect(isDev ? config.db_dev : config.db);
+mongoose.connect(config.db_dev);
+mongoose.Promise = global.Promise;
 
 
-        default:
-            return serveHTML("/index.html", res);
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// API routes
+require('./routes')(app);
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Add routes, both API and view
+// app.use(routes);
+
+// Connect to the Mongo DB
+// mongoose.connect(
+  //   process.env.MONGODB_URI || "mongodb://pet2pet-still-peak:pF**IBL1xOKiSx&IZcljT@ds139768.mlab.com:39768/heroku_qmhw2gzx"
+  // );
+  
+  
+  // Start the API server
+  app.listen(PORT, '0.0.0.0', function (err) {
+    if (err) {
+      console.log(err);
     }
-    // Here we use the fs package to read our index.html file
+
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+    console.info('>>> 🌎 Open http://0.0.0.0:%s/ in your browser.', PORT);
+  });
+  
+
+/*
+
+const fs = require('fs');
+const historyApiFallback = require('connect-history-api-fallback');
+const path = require('path');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+
+const webpackConfig = require('../webpack.config');
 
 
+
+// Configuration
+// ================================================================================================
+
+
+
+if (isDev) {
+  const compiler = webpack(webpackConfig);
+
+  app.use(historyApiFallback({
+    verbose: false
+  }));
+
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    contentBase: path.resolve(__dirname, '../client/public'),
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
+    }
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
+  app.use(express.static(path.resolve(__dirname, '../dist')));
+} else {
+  app.use(express.static(path.resolve(__dirname, '../dist')));
+  app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
+    res.end();
+  });
 }
 
-const serveHTML = (filePath, res) => {
-    return fs.readFile(__dirname + filePath, (err, data) => {
-        if (err) throw err;
-        res.writeHead(200, { "Content-type": "text/html" });
-        res.end(data);
-    })
-}
 
-function displayRoot(url, req, res) {
+module.exports = app;
 
-    fs.readFile(__dirname + "/index.html", function (err, data) {
-
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-    });
-}
-
-function displayFood(url, req, res) {
-
-    fs.readFile(__dirname + "/food.html", function (err, data) {
-
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-    });
-}
-
-function displayMovies(url, req, res) {
-
-    fs.readFile(__dirname + "/movies.html", function (err, data) {
-
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-    });
-}
-
-function displayCSS(url, req, res) {
-
-    fs.readFile(__dirname + "/cssFrameworks.html", function (err, data) {
-
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
-    });
-}
-
-function display404(url, req, res) {
-    const myHTML = "<html>" +
-        "<body><h1>404 Not Found </h1>" +
-        "<p>The page you were looking for: " + url + " can not be found</p>" +
-        "</body></html>";
-
-    res.writeHead(404, { "Content-Type": "text/html" });
-    res.end(myHTML);
-}
-
-server.listen(PORT, function () {
-    console.log("Server is listening on PORT: " + PORT);
-});
+*/

@@ -1,0 +1,53 @@
+import React, { Component } from "react";
+import "./home.css";
+import Nav from "../../components/Nav"
+import About from "../../components/About";
+
+// function App() {
+class Home extends Component {
+
+
+  render() {
+    return (
+      <div>
+        <Nav />
+
+        <div className="section white">
+          <div className="row container">
+            <h1 className="header season">Loranda Tax Service</h1>
+            <h5>Where taxes become easy</h5>
+          </div>
+        </div>
+
+        <div className="parallax-container">
+          <div className="parallax">
+            <img alt="pic" src="https://cdn.pixabay.com/photo/2018/04/06/11/21/office-3295556_960_720.jpg"></img>
+          </div>
+        </div>
+
+        <div className="section white">
+          <div className="row container">
+            <h1 className="header season">About</h1>
+              <About />
+          </div>
+        </div>
+
+        <div className="parallax-container">
+          <div className="parallax">
+            <img className="biz" alt="pic" src="https://www.northhill.org/wp-content/uploads/2019/01/Careers-photo-1024x682.jpg"></img>
+          </div>
+        </div>
+
+        <div className="section white">
+          <div className="row container">
+            <h1 className="header season">Services</h1>
+              <About />
+          </div>
+        </div>
+
+      </div>
+    );
+  }
+}
+
+export default Home;
