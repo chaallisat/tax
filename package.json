@@ -28,8 +28,18 @@
   },
   "homepage": "https://github.com/chaallisat/tax#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "routes": "^2.1.0"
+    "express-session": "^1.17.0",
+    "if-env": "^1.0.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.7.7",
+    "react-filter-search": "^1.0.8",
+    "react-router-dom": "^5.1.2",
+    "routes": "^2.1.0",
+    "serve-static": "^1.14.1"
   }
 }
