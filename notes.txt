@@ -1,2 +1,17 @@
 use p5 in css for padding: 5px,
 ul>li*5 will create 5  list items,
+
+*** Deploy to Heokur ***
+git push heroku master
+
+*** Add Domain ***
+heroku domains:add www.lorandataxservice.com --app radiant-citadel-58439
+
+*** Confirm DNS is config correctly ***
+host www.lorandataxservice.com
+
+*** View Domains ***
+heroku domains --app radiant-citadel-58439
+
+*** Heroku App Name ***
+radiant-citadel-58439.herokuapp.com

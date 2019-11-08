@@ -30,11 +30,13 @@ class Login extends Component {
 
     this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    const token = getFromStorage('the_main_app');
-    if (token) {
+    const obj = getFromStorage('the_main_app');
+    if (obj && obj.token) {
+      const { token } = obj;
       // Verify token
       fetch('/api/account/verrify?token=' + token)
         .then(res => res.json())
@@ -139,8 +141,72 @@ class Login extends Component {
   }
 
   onSignIn() {
-    //Grab State
+    const {
+      signInEmail,
+      signInPassword,
+    } = this.setState
+
+    this.setState({
+      isLoading: true,
+    })
     //Post req to backend
+    fetch('/api/account/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: signInEmail,
+        password: signInPassword
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.sucess) {
+          setInStorage('the_main_app', { token: json.token });
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+            signInPassword: '',
+            signInEmail: '',
+            token: json.token
+          });
+        } else {
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+          });
+        }
+      });
+  }
+
+  logout() {
+    this.setState({
+      isLoading: true,
+    });
+    const obj = getFromStorage('the_main_app');
+    if (obj && obj.token) {
+      const { token } = obj;
+      // Verify token
+      fetch('/api/account/logout?token=' + token)
+        .then(res => res.json())
+        .then(json => {
+          if(json.sucess) {
+            this.setState({
+              token: '',
+              isLoading: false
+            })
+          } else {
+            this.setState({
+              isLoading: false,
+            })
+          }
+        });
+    } else {
+      this.setState({
+        isLoading: false,
+      });
+    }
   }
 
   render() {
@@ -247,6 +313,7 @@ class Login extends Component {
             <h1>Hello World!</h1>
             <h5>This is the Login page.</h5>
             <p>Account</p>
+            <button onClick={this.logout}>Logout</button>
         </div>
 
     );
