@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../../components/Nav"
 import {getFromStorage, setInStorage} from "../../utils/storage"
 import "./login.css";
+import 'whatwg-fetch';
 
 // function App() {
 class Login extends Component {

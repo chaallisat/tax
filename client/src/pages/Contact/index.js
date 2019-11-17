@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Nav from "../../components/Nav";
+// import Nav from "../../components/Nav";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import "./contact.css";
 
@@ -10,7 +10,7 @@ class Contact extends Component {
   render() {
     return (
         <div>
-          <Nav />
+          {/* <Nav /> */}
             <h1>Hello World!</h1>
             <h5>This is the Contact page.</h5>
 

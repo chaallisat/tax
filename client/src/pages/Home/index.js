@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./home.css";
-import Nav from "../../components/Nav"
+// import Nav from "../../components/Nav"
 import About from "../../components/About";
 
 // function App() {
@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        {/* <Nav /> */}
 
         <div className="section white">
           <div className="row container">

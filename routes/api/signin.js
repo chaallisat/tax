@@ -22,12 +22,12 @@ module.exports = (app) => {
     } = body;
     
     console.log('body', body);
-    if (!firstName) {
-        return res.send({
-            success: false,
-            message: 'Error: Fist name cannot be blank.'
-        });
-    }
+    // if (!firstName) {
+    //     return res.send({
+    //         success: false,
+    //         message: 'Error: Fist name cannot be blank.'
+    //     });
+    // }
 
     if (!lastName) {
         return res.send({
