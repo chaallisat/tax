@@ -96,7 +96,8 @@ class Login extends Component {
     });
   }
 
-  onSignUp() {
+  onSignUp(event) {
+    event.preventDefault()
     //Grab State
     const {
       signUpFirstName,
@@ -141,7 +142,8 @@ class Login extends Component {
       });
   }
 
-  onSignIn() {
+  onSignIn(event) {
+    event.preventDefault()
     const {
       signInEmail,
       signInPassword,
@@ -181,7 +183,8 @@ class Login extends Component {
       });
   }
 
-  logout() {
+  logout(event) {
+    event.preventDefault()
     this.setState({
       isLoading: true,
     });
