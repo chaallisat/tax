@@ -6,8 +6,10 @@ const layoutStyle = {
   backgroundColor: 'green'
 };
 
-const Layout = () => (
-  <div style={layoutStyle}></div>
+const Layout = props => (
+  <div style={layoutStyle}>
+    {props.children}
+  </div>
 );
 
 export default Layout;
