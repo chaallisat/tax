@@ -2,55 +2,15 @@
 // import Layout from '../components/MyLayout';
 import Link from 'next/link';
 
-function getPosts() {
-  return [
-    { id: 'hello-nextjs', title: 'Hello Next.js' },
-    { id: 'learn-nextjs', title: 'Learn Next.js is awesome' },
-    { id: 'deploy-nextjs', title: 'Deploy apps with ZEIT' }
-  ];
-}
 
-const PostLink = ({ post }) => (
-  <li>
-    <Link href="/p/[id]" as={`/p/${post.id}`}>
-      <a>{post.title}</a>
-    </Link>
-  </li>
-);
 
-export default function Blog() {
+export default function Tax() {
   return (
     <div>
-      <h1>My Blog</h1>
-      <ul>
-        {getPosts().map(post => (
-          <PostLink key={post.id} post={post} />
-        ))}
-      </ul>
-      <style jsx>{`
-        h1,
-        a {
-          font-family: 'Arial';
-        }
-
-        ul {
-          padding: 0;
-        }
-
-        li {
-          list-style: none;
-          margin: 5px 0;
-        }
-
-        a {
-          text-decoration: none;
-          color: blue;
-        }
-
-        a:hover {
-          opacity: 0.6;
-        }
-      `}</style>
+      <h1 className="title">Loranda Tax Service</h1>
+      <p className="quotes">A business that make nothing but money is a poor business.</p>
+      <p className="author"> ~ Henry Ford</p>
+      <p className="body">Tax season can be a time of the year that most people dread. The complicated tax forms, the rude people, and even the thought of doing them wrong can cause many to stress. However, at Loranda Tax Service, our team strive to make this tax year as easy as we possibly can for you. We provide explanations that are easy to understand and we walk you through it with one-on-one guidance.</p>
     </div>
   );
 }
