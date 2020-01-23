@@ -4,12 +4,21 @@ const linkStyle = {
     marginRight: 15,
     padding: 20,
     // border: '1px solid #DDD',
-    color: 'black',
-    backgroundColor: 'azure'
+    color: 'white',
+    // backgroundColor: 'azure'
+    fontSize: 20,
+};
+
+const baconStyle = {
+    marginRight: 15,
+    padding: 20,
+    color: 'white',
+    backgroundColor: 'black',
+    textAlign: 'center'
 };
 
 const Footer = () => (
-    <div>
+    <div style={baconStyle}>
         <Link href="/">
             <a style={linkStyle}>Home</a>
         </Link>
@@ -22,7 +31,9 @@ const Footer = () => (
         <Link href="#">
             <a style={linkStyle}>Privacy Policy</a>
         </Link>
-        <p style={linkStyle}>&copy; 2019 Loranda Tax Service, LLC</p>
+        <br></br>
+        <br></br>
+        <small>&copy; 2019 Loranda Tax Service, LLC</small>
     </div>
 );
 
