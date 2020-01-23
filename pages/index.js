@@ -4,12 +4,17 @@ import Footer from '../components/Footer';
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 
-
+const logo = process.env.LTS_LOGO
+const imgStyle = {
+    // backgroundColor: 'green',
+      border: '1px solid #DDD',
+      fontSize: 12
+  };
 
 export default function Tax() {
   return (
     <div>
-      <h1 className="title">Loranda Tax Service</h1>
+      <h1 className="title"><img style={imgStyle} src={process.env.LTS_LOGO} alt="LTS Logo"></img> Loranda Tax Service</h1>
       <Header/>
       <Layout>
       <p className="quotes">A business that make nothing but money is a poor business.</p>
