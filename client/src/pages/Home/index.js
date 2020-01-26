@@ -27,20 +27,7 @@ class Home extends Component {
 
         <div className="section white">
           <div className="row container">
-            <h1 className="header season">About</h1>
-              <About />
-          </div>
-        </div>
-
-        <div className="parallax-container">
-          <div className="parallax">
-            <img className="biz" alt="pic" src="https://www.northhill.org/wp-content/uploads/2019/01/Careers-photo-1024x682.jpg"></img>
-          </div>
-        </div>
-
-        <div className="section white">
-          <div className="row container">
-            <h1 className="header season">Services</h1>
+            {/* <h1 className="header season">About</h1> */}
               <About />
           </div>
         </div>
