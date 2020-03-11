@@ -1,0 +1,23 @@
+
+.page-footer, .nav-extended {
+    background-color: green;
+    /* font-size: 24px; */
+}
+
+#test h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-size: 24px; */
+}
+#test, #home, #services, #contact{
+    min-height: 66.3vh;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
