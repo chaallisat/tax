@@ -11,6 +11,7 @@ const linkStyle = {
 
 const baconStyle = {
     marginRight: 15,
+    // height: '90%',
     padding: 20,
     color: 'white',
     backgroundColor: 'black',
