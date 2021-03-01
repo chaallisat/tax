@@ -18,8 +18,8 @@ const imgStyle = {
 export default function Tax() {
   return (
     <div style={idk}>
-      <h1 className="title"><img style={imgStyle} src={process.env.LTS_LOGO} alt="LTS Logo"></img> Loranda Tax Service</h1>
-      <Header/>
+      <h1 className="title"><img style={imgStyle} src={logo} alt="LTS Logo"></img> Loranda Tax Service</h1>
+      {/* <Header/> */}
       <MyLayout>
       <p className="quotes">A business that make nothing but money is a poor business.</p>
       <p className="author"> ~ Henry Ford</p>

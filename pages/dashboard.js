@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Header from '../components/Header';
+// import styles from '../styles/Home.module.css'
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import Link from 'next/link';
